@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   int windDeg = 0;
   bool resultFetched = false;
 
-  void getWeatherData() async {
+  Future<void> getWeatherData() async {
     String cityName = citynameController.text;
     final response = await http.get(Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$cityName&units=metric&appid=$API_KEY'));
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         resultFetched = true;
       });
       print(weatherData.temperature);
-    } else {
+    } else if (response.statusCode == 404) {
       AlertDialog(
         title: Column(children: [
           Icon(
