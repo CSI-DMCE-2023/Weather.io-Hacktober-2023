@@ -62,7 +62,6 @@ class _HomePageState extends State<HomePage> {
         windDeg = weatherData.windDeg;
         resultFetched = true;
       });
-      print(weatherData.temperature);
     } else if (response.statusCode == 404) {
       AlertDialog(
         title: Column(children: [
